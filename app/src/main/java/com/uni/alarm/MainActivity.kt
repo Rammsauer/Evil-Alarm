@@ -16,10 +16,12 @@ class MainActivity : AppCompatActivity() {
         if (!sharedPreferences.getString(Constants.BARCODE_KEY, null).equals(null) &&
             sharedPreferences.getBoolean(Constants.IS_HOT, false)
         ) {
-            Log.i(javaClass.simpleName, "Lock")
+            startActivity(Intent(this, LockActivity::class.java).putExtra(Constants.BARCODE_KEY, sharedPreferences.getString(Constants.BARCODE_KEY, null)))
+            finish()
         } else {
             Log.i(javaClass.simpleName, "Settings")
             startActivity(Intent(this, SettingsActivity::class.java))
+            finish()
         }
 
 
